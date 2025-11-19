@@ -244,24 +244,21 @@ def solve_for(var, freq, targetA, t=None, phi=None, d=None):
 with st.sidebar:
     st.header("🎯 Target & Band")
     A_target = st.slider("Target attenuation (dB)", 0.0, 15.0, 5.0, 0.1)
-    # Allow both min and max frequencies to move independently
-f_min, f_max = st.select_slider(
-    "Design frequency band (Hz)",
-    options=list(range(1000, 6201, 100)),
-    value=(2000, 5000)  # default range; both ends can move
-)
-design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
-st.caption("Parameters are solved at the anchor frequency using local linear fits.")
+    f_min, f_max = st.select_slider("Design frequency band (Hz)",
+                                    options=list(range(1000, 6201, 100)),
+                                    value=(1000, 6000))
+    design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
+    st.caption("Parameters are solved at the anchor frequency using local linear fits.")
 
-st.header("🔧 Fix / Free Parameters")
-fix_t   = st.checkbox("Fix thickness (mm)", True)
-t_val   = st.number_input("Thickness t (mm)", min_value=1.0, max_value=200.0, value=60.0, step=1.0)
+    st.header("🔧 Fix / Free Parameters")
+    fix_t   = st.checkbox("Fix thickness (mm)", True)
+    t_val   = st.number_input("Thickness t (mm)", min_value=1.0, max_value=200.0, value=60.0, step=1.0)
 
-fix_phi = st.checkbox("Fix porosity (%)", True)
-phi_pct = st.number_input("Porosity φ (%)", min_value=10.0, max_value=95.0, value=70.0, step=1.0)
+    fix_phi = st.checkbox("Fix porosity (%)", True)
+    phi_pct = st.number_input("Porosity φ (%)", min_value=10.0, max_value=95.0, value=70.0, step=1.0)
 
-fix_d   = st.checkbox("Fix cell size (mm)", True)
-d_val   = st.number_input("Cell size d (mm)", min_value=0.2, max_value=20.0, value=3.0, step=0.1)
+    fix_d   = st.checkbox("Fix cell size (mm)", True)
+    d_val   = st.number_input("Cell size d (mm)", min_value=0.2, max_value=20.0, value=3.0, step=0.1)
 
 phi_val = phi_pct/100.0
 
