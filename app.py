@@ -244,9 +244,12 @@ def solve_for(var, freq, targetA, t=None, phi=None, d=None):
 with st.sidebar:
     st.header("🎯 Target & Band")
     A_target = st.slider("Target attenuation (dB)", 0.0, 15.0, 5.0, 0.1)
-    f_min, f_max = st.select_slider("Design frequency band (Hz)",
-                                    options=list(range(1000, 6201, 100)),
-                                    value=(1000, 6000))
+    # Allow both min and max frequencies to move independently
+f_min, f_max = st.select_slider(
+    "Design frequency band (Hz)",
+    options=list(range(1000, 6201, 100)),
+    value=(2000, 5000)  # default range; both ends can move
+)
     design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
     st.caption("Parameters are solved at the anchor frequency using local linear fits.")
 
