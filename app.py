@@ -244,15 +244,18 @@ def solve_for(var, freq, targetA, t=None, phi=None, d=None):
 with st.sidebar:
     st.header("🎯 Target & Band")
     A_target = st.slider("Target attenuation (dB)", 0.0, 15.0, 5.0, 0.1)
-    # Allow both min and max frequencies to move independently
+    # Select the frequency band (both ends movable)
     f_min, f_max = st.select_slider(
     "Design frequency band (Hz)",
     options=list(range(1000, 6201, 100)),
-    value=(2000, 5000)  # default range; both ends can move
+    value=(2000, 5000)
     )
-    design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
-    st.caption("Parameters are solved at the anchor frequency using local linear fits.")
 
+    # Anchor frequency slider is now tied to the band and defaults to its midpoint
+    design_freq = st.slider(
+    "Anchor frequency for solving (Hz)",
+    int(f_min), int(f_max), int((f_min + f_max) // 2), step=100
+    )
     st.header("🔧 Fix / Free Parameters")
     fix_t   = st.checkbox("Fix thickness (mm)", True)
     t_val   = st.number_input("Thickness t (mm)", min_value=1.0, max_value=200.0, value=60.0, step=1.0)
