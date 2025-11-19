@@ -250,7 +250,7 @@ f_min, f_max = st.select_slider(
     options=list(range(1000, 6201, 100)),
     value=(2000, 5000)  # default range; both ends can move
 )
-    design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
+design_freq = st.slider("Anchor frequency for solving (Hz)", 1000, 6200, 1000, step=100)
     st.caption("Parameters are solved at the anchor frequency using local linear fits.")
 
     st.header("🔧 Fix / Free Parameters")
