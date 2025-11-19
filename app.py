@@ -15,7 +15,7 @@ st.caption("Estimate thickness, porosity, or cell size to meet an attenuation ta
 from io import StringIO
 
 # PN attenuation (thickness sweep): columns = 10 mm, 15 mm, 20 mm
-PN_TXT = \"\"\"Frequency\t10mm\tFrequency\t15mm\tFrequency\t20mm
+PN_TXT = """Frequency t10mm tFrequency t15mm tFrequency t20mm
 1000\t0.56332\t1000\t1.0348\t1000\t1.3171
 1100\t0.59615\t1100\t1.1048\t1100\t1.3963
 1200\t0.62977\t1200\t1.1755\t1200\t1.4739
@@ -71,7 +71,7 @@ PN_TXT = \"\"\"Frequency\t10mm\tFrequency\t15mm\tFrequency\t20mm
 6200\t1.6571\t6200\t1.1381\t6200\t1.1331\"\"\"
 
 # Porosity sweep: 90%, 80%, 70%
-POR_TXT = \"\"\"Frequency\t90%\tFrequency\t80%\tFrequency\t70%
+POR_TXT = """Frequency t90% tFrequency t80% tFrequency t70%
 1000\t0.58926\t1000\t1.0348\t1000\t2.1246
 1100\t0.62395\t1100\t1.1048\t1100\t2.2587
 1200\t0.65873\t1200\t1.1755\t1200\t2.3923
@@ -127,7 +127,7 @@ POR_TXT = \"\"\"Frequency\t90%\tFrequency\t80%\tFrequency\t70%
 6200\t0.91438\t6200\t1.1381\t6200\t4.1405\"\"\"
 
 # Cell size sweep: 3,5,7.5 mm
-CELL_TXT = \"\"\"Frequency\t3mm\tFrequency\t5mm\tFrequency\t7.5mm
+CELL_TXT = """Frequency t3mm tFrequency t5mm tFrequency t7.5mm
 1000\t1.6676\t1000\t1.0348\t1000\t0.71282
 1100\t1.735\t1100\t1.1048\t1100\t0.77806
 1200\t1.8025\t1200\t1.1755\t1200\t0.84488
